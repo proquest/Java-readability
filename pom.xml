@@ -80,13 +80,13 @@
 		</profile>
 	</profiles>
 	<dependencies>
-		<dependency>
+		<!--dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -104,7 +104,7 @@
 		<dependency>
 			<groupId>nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
-			<version>1.9.13</version>
+			<version>1.9.6.2</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
