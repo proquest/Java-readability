@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AbstractPageReader {
-    static final Logger LOG = LoggerFactory.getLogger(HttpPageReader.class);
+    static final Logger LOG = LoggerFactory.getLogger(AbstractPageReader.class);
     static final Charset UTF8 = Charset.forName("utf-8");
 
     private PageCharsetDetector charsetDetector;
