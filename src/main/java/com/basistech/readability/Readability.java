@@ -1039,8 +1039,10 @@ public class Readability {
             /*
              * If the leftovers of the URL after removing the base URL don't contain any digits, it's
              * certainly not a next page link.
+             * Now testing to see if the pattern is in the link before trying replaceFirst (was throwing an exception)
              */
-            String linkHrefLeftover = linkHref.replaceFirst(articleBaseUrl, "");
+     		String linkHrefLeftover = (linkHref.indexOf(articleBaseUrl)) > -1 ? linkHref.replaceFirst(articleBaseUrl, ""): linkHref;
+			
             if (!Patterns.exists(Patterns.DIGIT, linkHrefLeftover)) {
                 continue;
             }
