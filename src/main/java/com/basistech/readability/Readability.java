@@ -76,6 +76,7 @@ public class Readability {
     private String articleText;
     private boolean readAllPages;
     private boolean notFirstPage;
+	private boolean expectShortContent = false;
     private NekoJsoupParser nekoParser = new NekoJsoupParser();
     // for some testing and debugging purposes, obtain string reps of the XML we
     // got from parsing.
@@ -620,7 +621,7 @@ public class Readability {
          * likelihood of finding the content, and the sieve approach gives us a higher likelihood of finding
          * the -right- content.
          **/
-        if (articleContent.text().length() < 250) {
+        if (!expectShortContent && articleContent.text().length() < 250) {
             pageElement.html(pageCacheHtml);
             if (stripUnlikelyCandidates) {
                 try {
@@ -727,7 +728,7 @@ public class Readability {
                     toRemove = true;
                 }
 
-                if (toRemove) {
+                if (toRemove && !expectShortContent) {
                     LOG.debug("failed keep tests.");
                     ee.remove();
                 }
@@ -1232,5 +1233,10 @@ public class Readability {
     public List<String> getXmlImages() {
         return xmlImages;
     }
+
+	// when set to true this bypasses the content sieve that strips out tags for especially short content
+	public void setExpectShortContent(boolean expectShortContent) {
+		this.expectShortContent = expectShortContent;
+	}
 
 }
